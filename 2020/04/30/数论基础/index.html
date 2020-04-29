@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>数论基础 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="数论素数素数计数函数：小于或等于$x$的素数的个数，用$\pi(x)$表示。随着$x$的增大，有这样的近似结果：$\pi(x)\sim\frac{x}{ln(x)}$  素数筛： 1234567int m&#x3D;sqrt(n+0.5);memset(vis, 0, sizeof(vis));for(int i&#x3D;2; i&lt;&#x3D;m; i++) if(!vis[i])	for(int j&#x3D;i*i; j&amp;l">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数论基础">
+<meta property="og:url" content="http://yoursite.com/2020/04/30/%E6%95%B0%E8%AE%BA%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="数论素数素数计数函数：小于或等于$x$的素数的个数，用$\pi(x)$表示。随着$x$的增大，有这样的近似结果：$\pi(x)\sim\frac{x}{ln(x)}$  素数筛： 1234567int m&#x3D;sqrt(n+0.5);memset(vis, 0, sizeof(vis));for(int i&#x3D;2; i&lt;&#x3D;m; i++) if(!vis[i])	for(int j&#x3D;i*i; j&amp;l">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-04-29T18:24:41.000Z">
+<meta property="article:modified_time" content="2020-04-29T18:55:27.851Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-数论基础" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/04/30/%E6%95%B0%E8%AE%BA%E5%9F%BA%E7%A1%80/" class="article-date">
+  <time datetime="2020-04-29T18:24:41.000Z" itemprop="datePublished">2020-04-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      数论基础
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="数论"><a href="#数论" class="headerlink" title="数论"></a>数论</h4><h5 id="素数"><a href="#素数" class="headerlink" title="素数"></a>素数</h5><p>素数计数函数：小于或等于$x$的素数的个数，用$\pi(x)$表示。随着$x$的增大，有这样的近似结果：$\pi(x)\sim\frac{x}{ln(x)}$ </p>
+<p>素数筛：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> m=<span class="built_in">sqrt</span>(n+<span class="number">0.5</span>);</span><br><span class="line"><span class="built_in">memset</span>(vis, <span class="number">0</span>, <span class="keyword">sizeof</span>(vis));</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>; i&lt;=m; i++) <span class="keyword">if</span>(!vis[i])</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> j=i*i; j&lt;=n; j+=i) vis[j]=<span class="number">1</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>; i&lt;=n; i++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(!vis[i]) pr[tot++]=i;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>求大数小区间$(a,b)$间素数：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">cal</span><span class="params">(ll a, ll b)</span></span>&#123;</span><br><span class="line">	<span class="built_in">memset</span>(v, <span class="number">0</span>, <span class="keyword">sizeof</span>(v));</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;tot; i++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(pr[i]&gt;b) <span class="keyword">break</span>;</span><br><span class="line">		ll x=a/pr[i]+(a%pr[i]!=<span class="number">0</span>);</span><br><span class="line">		<span class="keyword">if</span>(x&lt;=<span class="number">1</span>) x=<span class="number">2</span>;</span><br><span class="line">		<span class="keyword">for</span>(ll j=x*pr[i]; j&lt;=b; j+=pr[i])</span><br><span class="line">			<span class="keyword">if</span>(j&gt;=a) v[j-a]=<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(ll i=<span class="number">0</span>; i&lt;=b-a; i++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(!v[i])&#123;</span><br><span class="line">			ans++;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="莫比乌斯-线性筛"><a href="#莫比乌斯-线性筛" class="headerlink" title="莫比乌斯(线性筛)"></a>莫比乌斯(线性筛)</h5><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">pre</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	mu[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= <span class="number">1e7</span>; ++i) &#123;</span><br><span class="line">		<span class="keyword">if</span> (!v[i]) mu[i] = <span class="number">-1</span>, p[++tot] = i;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= tot &amp;&amp; i &lt;= <span class="number">1e7</span> / p[j]; ++j) &#123;</span><br><span class="line">			v[i * p[j]] = <span class="number">1</span>;</span><br><span class="line">			<span class="keyword">if</span> (i % p[j] == <span class="number">0</span>) &#123;</span><br><span class="line">				mu[i * p[j]] = <span class="number">0</span>;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			mu[i * p[j]] = -mu[i];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="短小互推的"><a href="#短小互推的" class="headerlink" title="短小互推的"></a>短小互推的</h5><h6 id="欧拉定理"><a href="#欧拉定理" class="headerlink" title="欧拉定理"></a>欧拉定理</h6><p>$gcd(a,m)=1$，则$a^{\varphi(m)}\equiv1(\mod m)$ </p>
+<h6 id="扩展欧拉定理"><a href="#扩展欧拉定理" class="headerlink" title="扩展欧拉定理"></a>扩展欧拉定理</h6><p>$a^b\equiv\begin{cases}a^{b{\mod\varphi(p)}},\quad &amp;gcd(a,p)=1 \ a^b,\quad &amp;gcd(a,p)\neq1,b&lt;\varphi(p) \ a^{b\mod\varphi(p)+\varphi(p)},\quad &amp;gcd(a.p)\neq1,b\geq\varphi(p)\end{cases}\pmod p$ </p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ll <span class="title">phi</span><span class="params">(ll n)</span> </span>&#123;</span><br><span class="line">	ll ans = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span> (ll i = <span class="number">2</span>; i*i &lt;= n; i++) &#123;</span><br><span class="line">		<span class="keyword">if</span> (n%i == <span class="number">0</span>) &#123;</span><br><span class="line">			n /= i;</span><br><span class="line">			ans *= i - <span class="number">1</span>;</span><br><span class="line">			<span class="keyword">while</span> (n%i == <span class="number">0</span>) &#123;</span><br><span class="line">				n /= i;</span><br><span class="line">				ans *= i;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (n &gt; <span class="number">1</span>) ans *= n - <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">ll <span class="title">multiply</span><span class="params">(ll a, ll b, ll mod)</span> </span>&#123;</span><br><span class="line">	ll ans = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span> (b) &#123;</span><br><span class="line">		<span class="keyword">if</span> (b &amp; <span class="number">1</span>) &#123;</span><br><span class="line">			ans = ((ans%mod)*(a%mod)) % mod;</span><br><span class="line">			b--;</span><br><span class="line">		&#125;</span><br><span class="line">		b /= <span class="number">2</span>;</span><br><span class="line">		a = ((a%mod)*(a%mod)) % mod;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="费马小定理"><a href="#费马小定理" class="headerlink" title="费马小定理"></a>费马小定理</h6><blockquote>
+<p>$p$为素数, $gcd(a,p)=1$, 则$a^{p-1}\equiv1(modp)$</p>
+<p>另一形式：对任意整数$a$，有$a^p\equiv a(modp)$ </p>
+</blockquote>
+<h6 id="裴蜀定理"><a href="#裴蜀定理" class="headerlink" title="裴蜀定理"></a>裴蜀定理</h6><p> 设$a,\ b$是不全为零的整数，则存在整数$x,\ y$, 使得$ax+by=gcd(a,b)$ </p>
+<p>证明及求解见<strong>扩展欧几里得</strong>。</p>
+<h6 id="类欧几里得算法？"><a href="#类欧几里得算法？" class="headerlink" title="类欧几里得算法？"></a>类欧几里得算法？</h6><h6 id="线性同余方程"><a href="#线性同余方程" class="headerlink" title="线性同余方程"></a>线性同余方程</h6><blockquote>
+<p>形如$ax\equiv c\pmod b$的方程。</p>
+</blockquote>
+<p>原方程等价于$ax+by=c$，有整数解的充要条件为$\gcd(a,b)\mid c$ 。</p>
+<p>特殊：$\gcd(a,b)=1,\ x_0,y_0$为方程一组解，通解为$x=x_0+bt,\ y=y_0-at$，$t$为任意整数。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Exgcd</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b, <span class="keyword">int</span> &amp;x, <span class="keyword">int</span> &amp;y)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (!b)&#123;</span><br><span class="line">		x=<span class="number">1</span>, y=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">return</span> a;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> d=Exgcd(b, a%b, x, y);</span><br><span class="line">	<span class="keyword">int</span> t=x;</span><br><span class="line">	x=y;</span><br><span class="line">	y=t-(a/b)*y;</span><br><span class="line">	<span class="keyword">return</span> d;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">liEu</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b, <span class="keyword">int</span> c, <span class="keyword">int</span>&amp; x, <span class="keyword">int</span>&amp; y)</span></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> d=ex_gcd(a, b, x, y);</span><br><span class="line">  <span class="keyword">if</span>(c%d!=<span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">int</span> k=c/d;</span><br><span class="line">  x*=k;</span><br><span class="line">  y*=k;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line">ll x, y;</span><br><span class="line"><span class="keyword">bool</span> ans=liEu(a, b, c, x, y);</span><br></pre></td></tr></table></figure>
+
+<p>若$gcd(a,b)=1$，则$ax=c\pmod b$ 在$[0,b-1]$上有唯一解。</p>
+<p>若$gcd(a,b)=d$，则$ax=c\pmod b$在$[0,b/d-1]$上有唯一解。</p>
+<p>$\therefore$我的求$ax\equiv c\pmod b$：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ll x, y, ste=(a,b);</span><br><span class="line"><span class="keyword">if</span>(c%ste) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">a/=ste, b/=ste, c/=ste;</span><br><span class="line">exgcd(a, c, x, y);<span class="comment">//求c=1</span></span><br><span class="line">x=(x*c)%b;</span><br><span class="line">x=(x%b+b)%b;<span class="comment">//求最小非负x</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h6 id="中国剩余定理"><a href="#中国剩余定理" class="headerlink" title="中国剩余定理"></a>中国剩余定理</h6><p> 中国剩余定理（Chinese Remainder Theorem, CRT ）</p>
+<p>求解形如$\begin{cases}x&amp;\equiv &amp;a_1\pmod {n_1}\    x&amp;\equiv &amp;a_2\pmod{n_2}\    x&amp;\equiv &amp;a_3\pmod{n_3}\    &amp;\vdots&amp;\    x&amp;\equiv &amp;a_n\pmod{n_k}\end{cases}$ 的一元线性同余方程，其中$n_1, n_2, n_3, \dots, n_k$两两互质。</p>
+<p>求解：</p>
+<p>$n= \prod _{i=1} ^kn_i$ </p>
+<p>第$i$个方程：$m_i:m_i=\frac n{n_i},\ m_i^{-1}:m_im_i^{-1}\equiv 1\pmod {n_i},\ c_i: c_i=m_im_i^{-1}.$ </p>
+<p>$c_i$不对$n_i$取模。</p>
+<p>方程组唯一解：$ans=\sum_{i=1}^ka_ic_i\pmod n$ </p>
+<p>证明：不会证，不想证，懒得证。</p>
+<p><strong>应用：</strong>一些计数问题给出的模<strong>不是质数</strong>，但发现该模数<strong>没有平方因子</strong>，即由两两互质的的质数相乘得到，则可分别对素因子进行计算，再用CRT求解答案。</p>
+<h6 id="卢卡斯定理"><a href="#卢卡斯定理" class="headerlink" title="卢卡斯定理"></a>卢卡斯定理</h6><p> $m$为素数时，用于求解大组合数取模的问题。</p>
+<p>模数为$p$，定理内容：$C_n^m\bmod p=C_{\lfloor{\frac n p}\rfloor}^{\lfloor{\frac m p}\rfloor}\times C_{n\bmod p}^{m\bmod p}\bmod p$ </p>
+<p>其中：$m\bmod p,\ n\bmod p\ &lt;p$，可直接计算，</p>
+<p>$C_{\lfloor{\frac n p}\rfloor}^{\lfloor{\frac m p}\rfloor}$继续使用卢卡斯定理求解，$m=0$时结束，返回$1$。</p>
+<p>复杂度：$O(f(p)+g(n)\log n)$，$f(p)$为预处理的复杂度，$g(n)$为单次求组合数的复杂度。 </p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ll <span class="title">Lucas</span><span class="params">(ll n, ll m, ll p)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(m==<span class="number">0</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">return</span> (C(n%p, m%p, p)*Lucas(n/p, m/p, p))%p;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="exLucas定理？"><a href="#exLucas定理？" class="headerlink" title="exLucas定理？"></a>exLucas定理？</h6><p>$m$不为素数。</p>
+<p>完全分解：$n=p_1^{k_1}p_2^{k_2}\cdots p_s^{k_s},\ {n&gt;1}$ </p>
+<p> 结合中国剩余定理，列出$i$个方程$C_n^m\equiv a_i\pmod{p_i^{q_i}}$并求解。</p>
+<p>然而，$p_i^{q_i}$也不一定为质数，以下为求解$C_n^m\bmod p^t$ ：</p>
+<h6 id="BSGS"><a href="#BSGS" class="headerlink" title="BSGS?"></a>BSGS?</h6><p> BSGS（baby-step gaint-step），即大步小步算法。常用于求解离散对数问题，可以在$O\sqrt p$内求解$a^x\equiv b\pmod p$ </p>
+<h6 id="原根"><a href="#原根" class="headerlink" title="原根?"></a>原根?</h6><p>$\gcd(a,b)=1$，使$a^l\equiv1\pmod b$成立的最小$l$称为$a$关于模$b$的阶，记作$\text{ord}_ma$。</p>
+<p>$\text{ord}_ma^t=\frac l{(t,l)}$ </p>
+<h5 id="乘法逆元"><a href="#乘法逆元" class="headerlink" title="乘法逆元"></a>乘法逆元</h5><p>线性同余方程$ax\equiv1\pmod b$，则称$x$为$a\mod b$ 的逆元，记作$a^{-1}$。</p>
+<p>费马小定理：$p$为质数且$gcd(a,p)=1\Rightarrow a^{-1}=a^{p-2}$，快速幂即可</p>
+<h6 id="扩展欧几里得：-n"><a href="#扩展欧几里得：-n" class="headerlink" title="扩展欧几里得：$n$"></a>扩展欧几里得：$n$</h6><p>用于求$ax+by=gcd(a, b)$的一组解。</p>
+<p>两边同除以$gcd(a, b)$后，等价于$gcd(a, b)=1$，求$ax+by=1$的一组解。</p>
+<p>$a=q_1b+r_1,\quad r_1=a%b$ </p>
+<p>$b=q_2r_1+r_2,\quad r_2=b%r_1$ </p>
+<p>$r_1=q_3r_2+r_3,\quad r_3=r_1%r_2$ </p>
+<p>$\dots$ </p>
+<p>$r_{n-1}=q_{n+1}r_n,\quad r_{n+1}=0$，结束。</p>
+<p>$gcd(a,b)=r_n$；</p>
+<p>则有$Q_ka-P_kb=(-1)^{k-1}r_k,\ k=1,2,3,\dots,n$ ，</p>
+<p>其中 $P_0=1,\ P_1=q_1,\ P_k=q_kP_{k-1}+P_{k-2}$ </p>
+<p>$Q_0=0,\ Q_1=1,\ Q_k=q_kQ_{k-1}+Q_{k-2},\quad 2&lt;=k&lt;=n$ </p>
+<p>计算：</p>
+<p><strong>我的想法：</strong></p>
+<p>使用元组$(x,\ y)$表示$ax+by$的值，即：$a=(1,0),\ b=(0,1)$。有：</p>
+<p>$r_1=a-q_1b=(1,-q_1)$ </p>
+<p>$r_2=b-q_2r_1=(0, 1)-q_2(1,-q_1)=(-q_2，q_1q_2+1)$ </p>
+<p>$r_3=r_1-q_3r_2=(1,-q_1)-q_3(-q_2,q_1q_2+1)$ </p>
+<p>$\dots$ </p>
+<p>$r_n=r_{n-2}-q_nr_{n-1}=(x_n,y_n)$ </p>
+<p>$r_{n+1}=0=r_{n-1}-q_{n+1}r_n=(x_{n+1},y_{n+1})$ </p>
+<p>$\because r_n=gcd(a,b)$ </p>
+<p>$\therefore r_n=(x_n,y_n)$为$ax+by=gcd(a,b)$的一个解。</p>
+<p><strong>exgcd：</strong></p>
+<p>$ax_1+by_1=gcd(a, b)$ </p>
+<p>$bx_2+(a\mod b)y_2=gcd(b, a\mod  b)=gcd(a, b)$ </p>
+<p>$ax_1+by_1=bx_2+(a\mod b)y_2$</p>
+<p>$a\mod b=a-(\lfloor\frac{a}{b}\rfloor\times b)$ </p>
+<p>$ax_1+by_1=bx_2-(a-(\lfloor\frac{a}{b}\rfloor)\times b)y_2$ </p>
+<p>$x_1=y_2,\quad y_1=x_2-\lfloor\frac{a}{b}\rfloor y_2$  </p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Exgcd</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b, <span class="keyword">int</span> &amp;x, <span class="keyword">int</span> &amp;y)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (!b) &#123;</span><br><span class="line">		x=<span class="number">1</span>, y=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">return</span> a;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> d=Exgcd(b, a%b, x, y);</span><br><span class="line">	<span class="keyword">int</span> t=x;</span><br><span class="line">	x=y;</span><br><span class="line">	y=t-(a/b)*y;</span><br><span class="line">	<span class="keyword">return</span> d;</span><br><span class="line">&#125;</span><br><span class="line">ll x, y;</span><br><span class="line">ll d=exgcd(a, m, x, y);</span><br><span class="line"><span class="keyword">if</span>(d==<span class="number">1</span>) inv[a]=(x%m+m)%m;</span><br></pre></td></tr></table></figure>
+
+<h6 id="线性递推：-1-到-n"><a href="#线性递推：-1-到-n" class="headerlink" title="线性递推：$1$到$n$"></a>线性递推：$1$到$n$</h6><p>$O(n) $</p>
+<p>求$a$在膜$m$下的逆元：</p>
+<p>$1^{-1}\equiv1\pmod m$ </p>
+<p>$m=qa+r,\quad qa+r\equiv0\pmod m$ </p>
+<p>两边同乘以$a^{-1},\ r^{-1}$：</p>
+<p>$qr^{-1}+a^{-1}\equiv0\pmod m$ </p>
+<p>$a^{-1}\equiv-qr^{-1}\pmod m$ </p>
+<p>$a^{-1}\equiv-(\frac{m}{a})\times(m\bmod a)^{-1}\pmod m$ </p>
+<p>避免负号出现，原式加上$m$：</p>
+<p>$a^{-1}\equiv(m-\frac{m}{a})\times(m\bmod a)^{-1}\pmod m$ </p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">inv[<span class="number">1</span>]=<span class="number">1</span>; </span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>; i&lt;=n; i++) inv[i]=(ll)(m-m/i)*inv[m%i]%m;</span><br></pre></td></tr></table></figure>
+
+<h6 id="线性递推：-1-到-n-1"><a href="#线性递推：-1-到-n-1" class="headerlink" title="线性递推：$1!$到$n!$"></a>线性递推：$1!$到$n!$</h6><p>$O(n+\log p)$ </p>
+<p>可用于求任意$n$个数的逆元，其中$1\leq a_i&lt;p$，因为倒着递推，不必计算$1$到$\min(a_i)-1$的逆元。</p>
+<p>使用费马小定理或扩展欧几里得计算<strong>最后一个数$a_t$的前缀积</strong>的逆元，</p>
+<p>乘以最后一个数后得到$a_{t-1}$的前缀积的逆元，以此类推。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line">	fact[<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;maxn; i++)&#123;</span><br><span class="line">		fact[i]=fact[i<span class="number">-1</span>]*i%mod;</span><br><span class="line">	&#125;</span><br><span class="line">	inv[maxn<span class="number">-1</span>]=qpm(fact[maxn<span class="number">-1</span>], mod<span class="number">-2</span>);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=maxn<span class="number">-2</span>; i&gt;=<span class="number">0</span>; i--)&#123;</span><br><span class="line">		inv[i]=inv[i+<span class="number">1</span>]*(i+<span class="number">1</span>)%mod;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="常见数论函数"><a href="#常见数论函数" class="headerlink" title="常见数论函数"></a>常见数论函数</h5><h6 id="1）-u-n-e-n-I-n"><a href="#1）-u-n-e-n-I-n" class="headerlink" title="1）$u(n),\ e(n),\ I(n)$"></a>1）$u(n),\ e(n),\ I(n)$</h6><p>$u(n)\equiv1,\ n\geq1$ </p>
+<p>$e(n)=n,\ n\geq1$ </p>
+<p>$I(n)=\begin{cases}1,\quad n=1\0,\quad n&gt;1\end{cases}$ </p>
+<h6 id="2）-d-n"><a href="#2）-d-n" class="headerlink" title="2）$d(n)$"></a>2）$d(n)$</h6><blockquote>
+<p>$n$的所有正除数的个数：$d(n)=\sum_{d\mid n}1$ </p>
+</blockquote>
+<p>完全分解：$n=p_1^{k_1}p_2^{k_2}\cdots p_s^{k_s},\ {n&gt;1}$ ，$d(1)=1$ </p>
+<p>$d(n)=\prod_{i=1}^s(k_i+1)$  </p>
+<p>可乘函数可使用线性筛：</p>
+<p>$p$存放质数，用d表示约数个数，num表示最小质因子出现次数。考虑$n&gt;1$。</p>
+<p>$d(p)=2, num(p)=1$ </p>
+<p>设$ d=\frac n p$，$p$为$n$的最小质因子：</p>
+<p>$ p\mid d:\quad num(n)=num(d)+1,\quad d(n)=\frac{d(d)\times (num(n)+1)}{num(d)+1}$ </p>
+<p>考虑$d,p$互质，因为为可乘函数：</p>
+<p>$p\nmid d:\quad num(n)=1,\quad d(n)=d(d)\times d(p)$ </p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">pre</span><span class="params">()</span></span>&#123;</span><br><span class="line">	d[<span class="number">1</span>]=<span class="number">1</span>, tot=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>; i&lt;=n; i++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(!v[i]) p[++tot]=i, d[i]=<span class="number">2</span>, num[i]=<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>; j&lt;=tot &amp;&amp; i&lt;=n/p[j]; j++)&#123;</span><br><span class="line">			v[p[j]*i]=<span class="number">1</span>;</span><br><span class="line">			<span class="keyword">if</span>(i%p[j]==<span class="number">0</span>)&#123;</span><br><span class="line">				num[i*p[j]]=num[i]+<span class="number">1</span>;</span><br><span class="line">				d[i*p[j]]=d[i]/(num[i]+<span class="number">1</span>)*(num[i*p[j]]+<span class="number">1</span>);</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			num[i*p[j]]=<span class="number">1</span>;</span><br><span class="line">			d[i*p[j]]=d[i]*d[p[j]];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="3）-Omega-n"><a href="#3）-Omega-n" class="headerlink" title="3）$\Omega(n)$"></a>3）$\Omega(n)$</h6><p>$n$的全部素因子的个数$\Omega(n)$：</p>
+<p>$\Omega(1)=0$ </p>
+<p>$\Omega(n)=$$\sum_{i=1}^sa_i$ </p>
+<h6 id="4）-omega-n"><a href="#4）-omega-n" class="headerlink" title="4）$\omega(n)$"></a>4）$\omega(n)$</h6><p>$n$的不同素因子个数$\omega(n)$：</p>
+<p>$\omega(1)=0,\quad\omega(n)=s$ </p>
+<h6 id="5）-sigma-lambda-n"><a href="#5）-sigma-lambda-n" class="headerlink" title="5）$\sigma_\lambda(n)$"></a>5）$\sigma_\lambda(n)$</h6><p>$n$的正除数的幂和函数$\sigma_\lambda(n),\ \lambda$为实数：</p>
+<p>$\sigma_\lambda(n)=\sum_{d\mid n}d^\lambda$ </p>
+<p>特殊的，<strong>约数和</strong>：$\lambda=1$时，$\sigma(n)=\sum_{d\mid n}d$ </p>
+<p>完全分解：$n=p_1^{k_1}p_2^{k_2}\cdots p_s^{k_s},\ {n&gt;1}$ ，$d(1)=1$ </p>
+<p>$\sigma(n)=\prod_{i=1}^s(1+p_i+p_i^2+\dots+p_i^{k_i})=\prod_{i=1}^s\sum_{j=0}^{k_i}p_i^j$ </p>
+<p><strong>又因：</strong>$\sum_{j=0}^{k_i}p_i^j=\frac{p_i^{k_i+1}-1}{p_i-1} $ </p>
+<p>$\sigma(n)=\prod_{i=1}^s(1+p_i+p_i^2+\dots+p_i^{k_i})=\prod_{i=1}^s\frac{p_i^{k_i+1}-1}{p_i-1}$ </p>
+<p>以下计算均采用<strong>前者</strong>推导。</p>
+<p>可乘函数可使用线性筛：</p>
+<p>$p$存放质数，$f_i$表示$i$的约数和，$g_i$表示$i$的最小质因子$p$的$\sum_{j=0}^{k}p^j$ 。考虑$n&gt;1$。</p>
+<p>$g(p)=p+1,\quad f(p)=i+1$ </p>
+<p>设$ d=\frac n p$，$p$为$n$的最小质因子：</p>
+<p>$ p\mid d:\quad g(n)=g(d)\times p+1,\quad f(n)=\frac{f(d)\times g(n)}{g(d)}$ </p>
+<p>考虑$d,p$互质，因为为可乘函数：</p>
+<p>$p\nmid d:\quad g(n)=p+1,\quad f(n)=f(d)\times f(p)$ </p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">pre</span><span class="params">()</span></span>&#123;</span><br><span class="line">	g[<span class="number">1</span>]=f[<span class="number">1</span>]=<span class="number">1</span>, tot=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>; i&lt;=n; i++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(!v[i]) p[++tot]=i, g[i]=i+<span class="number">1</span>, f[i]=i+<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>; j&lt;=tot &amp;&amp; i&lt;=n/p[j]; j++)&#123;</span><br><span class="line">			v[p[j]*i]=<span class="number">1</span>;</span><br><span class="line">			<span class="keyword">if</span>(i%p[j]==<span class="number">0</span>)&#123;</span><br><span class="line">				g[i*p[j]]=g[i]*p[j]+<span class="number">1</span>;</span><br><span class="line">				f[i*p[j]]=f[i]/g[i]*g[i*p[j]];</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">            g[i*p[j]]=p[j]+<span class="number">1</span>;</span><br><span class="line">			f[i*p[j]]=f[i]*f[p[j]];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注：求$\sigma(n)$是否为奇数，根据第一个公式，$p_i=2$时，$k_i$为任意数可，对其他$p_i,\ k_i$必须为偶数，所以$n$为平方数或$n/2$为平方数为充要条件。求$1$到$n$中，$\sigma(i)$为奇数的个数，$ans=sqrt(n)+sqrt(n/2)$即可。</p>
+<h6 id="6）-varphi-n"><a href="#6）-varphi-n" class="headerlink" title="6）$\varphi(n)$"></a>6）$\varphi(n)$</h6><blockquote>
+<p>欧拉函数 $\varphi(n)$：小于等于$n$，和$n$互质的个数。</p>
+</blockquote>
+<p>1与任何正整数互质，$\varphi(1)=1$</p>
+<p>求解：完全分解：$n=p_1^{k_1}p_2^{k_2}\cdots p_s^{k_s}$ </p>
+<p>推导表达式，由容斥原理：$\varphi(n)=n+(-\frac{n}{p_1}-\frac{n}{p_2}-\dots-\frac{n}{p_s})+(\frac{n}{p_1p_2}+\frac{n}{p_1p_3}+\dots+\frac{n}{p_{s-1}p_s})\dots$ $\varphi(n)=\sum_{S\subseteq{p_1,p_2\dots p_s}}(-1)^{\mid S\mid}\frac{n}{\prod_{p_i\in S} p_i}=n\prod_{i=1}^s(1-\frac{1}{p_i})$ </p>
+<p>$\varphi(n)=n\times\prod_{i=1}^{s}\frac{p_i-1}{p_i}$ </p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">euler_phi</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> m=(<span class="keyword">int</span>)<span class="built_in">sqrt</span>(n+<span class="number">0.5</span>);</span><br><span class="line">	<span class="keyword">int</span> ans=n;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">2</span>; i&lt;=m; i++)</span><br><span class="line">		<span class="keyword">if</span> (n%i== <span class="number">0</span>) &#123;</span><br><span class="line">			ans=ans/i*(i<span class="number">-1</span>);</span><br><span class="line">			<span class="keyword">while</span>(n%i==<span class="number">0</span>) n/=i;</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="keyword">if</span> (n&gt;<span class="number">1</span>) ans=ans/n*(n<span class="number">-1</span>);</span><br><span class="line">	<span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>性质：</p>
+<p>（1）为可乘函数，$gcd(a,b)=1$：$\varphi(a\times b)=\varphi(a)\times\varphi(b)$。</p>
+<p>（2）特殊的，$n$为奇数：$\varphi(2n)=\varphi(n)$，$\because 2\times\frac{2-1}{2}=1$ </p>
+<p>（3）$n=\sum_{d\mid n}\varphi(d)$ ，含$1$和$n$，证明：</p>
+<p><strong>法一：</strong>要证明$e(n)=n\ (n\geq1)$为$\varphi(n)$的莫比乌斯变换，</p>
+<p>只需证明$\varphi(n)$为$e(n)$的反莫比乌斯变换即可。</p>
+<p>$e[n]$的反莫比乌斯变换：$\varphi(n)=\sum_{d\mid n}\mu(d)\frac n d$ </p>
+<p>$\varphi(n)$从定义式正经变换：$\varphi(n)=\sum_{1\leq d\leq n, (d,n)=1}1=\sum_{1\leq d\leq n}\sum_{l\mid (d, n)}\mu(l)=\sum_{l\mid n}\mu(l)\sum_{1\leq d\leq n,l\mid d}1=\sum_{l\mid n}\mu(l)\frac n l$ </p>
+<p>可见上下两式相等，故$\varphi(n)$为$e(n)$的反莫比乌斯变换。</p>
+<p><strong>法二：</strong>$gcd(a,n)=d$，按$d$对$a$进行分类，令$n=dk$则$gcd(\frac a d, k)=1$。固定的$d$对应$a$的个数为</p>
+<p>$\varphi(k)=\varphi(\frac n d)$，所以$n=\sum_{d\mid n} \varphi(\frac n d)=\sum_{d\mid n} \varphi(d)$ 。</p>
+<p>（4）特殊的$n=p^k$：$\varphi(n)=p^k-p^{k-1}$ </p>
+<p>$=(p-1)\times p^{k-1}=n\times\frac{p-1}{p}$，由定义可得。</p>
+<p>可用于求$\sum_{i=1}^{n}\sum_{j=i+1}^n gcd(i, j)$ ：</p>
+<p>显然$ans[i]=ans[i-1]+\sum_{i=1}^{n-1}gcd(i,n)$，仅需证明此处$\sum_{i=1}^{n-1}gcd(i,n)=\sum_{d\mid n}\varphi(\frac n d)\times d$ ：</p>
+<p>按$d$对$a$进行分类，令$n=dk$则$gcd(\frac a d, k)=1$。固定的$d$对应$a$的个数为</p>
+<p>$\varphi(k)=\varphi(\frac n d)$，和为$\varphi(\frac n d)\times d$ 。$f(n)=\sum_{d\mid n}\varphi(\frac n d)\times d=(\varphi\ast e)(n)$，<strong>解题关键是</strong>观察$f(n)$的表达式也可用线性筛，所以不会超时。因为此题$d&lt;n$而不是$d\leq n$，故内层循环从$i*2$开始，而不是从$i$开始。$(\varphi\ast e)(n)$筛法：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n; i++)&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> j=i+i; j&lt;=n; j+=i)&#123;</span><br><span class="line">		f[j]+=(ll)i*(ll)phi[j/i];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>筛法：</strong> </p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">phi_table</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">	<span class="built_in">memset</span>(phi, <span class="number">0</span>, <span class="keyword">sizeof</span>(phi));</span><br><span class="line">	phi[<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>; i&lt;=n; i++)</span><br><span class="line">		<span class="keyword">if</span>(!phi[i])</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=i; j&lt;=n; j+=i)&#123;</span><br><span class="line">				<span class="keyword">if</span>(!phi[j]) phi[j]=j;</span><br><span class="line">				phi[j]=phi[j]/i*(i<span class="number">-1</span>);</span><br><span class="line">			&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="7）-mu-n"><a href="#7）-mu-n" class="headerlink" title="7）$\mu(n)$"></a>7）$\mu(n)$</h6><p>莫比乌斯函数$\mu(n)$：</p>
+<p>$\mu(n)=\begin{cases}1,\quad &amp;n=1\(-1)^s,\quad &amp;n=p_1p_2\dots p_s,\ p_1&lt;p_2&lt;\dots&lt;p_s\0,\quad &amp;其他\end{cases}$ </p>
+<h6 id="8）-Lambda-n"><a href="#8）-Lambda-n" class="headerlink" title="8）$\Lambda(n)$"></a>8）$\Lambda(n)$</h6><p>Mangoldt函数$\Lambda(n)$：</p>
+<p>$\Lambda(n)=\begin{cases}\log p,\quad &amp;n=p^k,\ k\geq1\0\quad &amp;其他\end{cases}$ </p>
+<h6 id="9）-lambda-n"><a href="#9）-lambda-n" class="headerlink" title="9）$\lambda(n)$"></a>9）$\lambda(n)$</h6><p>Liouville函数$\lambda(n)$：</p>
+<p>$\lambda(n)=(-1)^{\Omega(n)}$ </p>
+<h6 id="可乘函数（积性函数）"><a href="#可乘函数（积性函数）" class="headerlink" title="可乘函数（积性函数）"></a>可乘函数（积性函数）</h6><blockquote>
+<p>$f(mn)=f(m)\times f(n),\quad\gcd(m,n)=1$ </p>
+</blockquote>
+<p>欧拉函数$\varphi(n)$，莫比乌斯函数$\mu(n)$，正因子和$\sigma(n)$，正因子数$d(n)$。</p>
+<p>均可采用线性筛法。</p>
+<h6 id="完全（绝对）可乘函数"><a href="#完全（绝对）可乘函数" class="headerlink" title="完全（绝对）可乘函数"></a>完全（绝对）可乘函数</h6><blockquote>
+<p>$f(mn)=f(m)f(n)$ </p>
+</blockquote>
+<p>$u(n),\ e(n),\ I(n)$ </p>
+<h5 id="Dirichlet-乘积"><a href="#Dirichlet-乘积" class="headerlink" title="Dirichlet 乘积"></a>Dirichlet 乘积</h5><p>设$f(n),\ h(n)$是两个数论函数，</p>
+<p>$h(n)=\sum_{d\mid n}f(d)g(\frac{n}{d})$ 为$f(n),\ g(n)$的Dirichlet 乘积或卷积，记作：</p>
+<p>$h=f\ast g,\quad (f\ast g)(n)=\sum_{ab=n}f(a)g(b),$ </p>
+<p>满足结合律和交换律。</p>
+<p>$f\ast g\ast h=\sum_{abc=n}f(a)g(b)h(c)$ </p>
+<p>$I$为卷积单位元素，$I=\mu\ast u$，互为Dirichlet逆。</p>
+<h6 id="莫比乌斯反演"><a href="#莫比乌斯反演" class="headerlink" title="莫比乌斯反演"></a>莫比乌斯反演</h6><p> 很难求出原函数的值，而容易求出其<strong>倍数和</strong>或<strong>约数和</strong> ，则可通过莫比乌斯反演简化运算，求得原函数的值。 </p>
+<p>引理1：$\forall a,b,c\in\mathbb{Z},\lfloor\frac{a}{bc}\rfloor=\lfloor\frac{\lfloor\frac{a}{b}\rfloor}{c}\rfloor$</p>
+<p>引理2：$\forall n\in N,\vert{\lfloor\frac{n}{d}\rfloor\mid d\in N}\vert\leq\lfloor2\sqrt{n}\rfloor$，$\vert V\vert$表示集合$V$的元素个数</p>
+<h6 id="莫比乌斯变换"><a href="#莫比乌斯变换" class="headerlink" title="莫比乌斯变换"></a>莫比乌斯变换</h6><blockquote>
+<h5 id="若-F-f-ast-u-，则称-F-为-f-的莫比乌斯变换，即："><a href="#若-F-f-ast-u-，则称-F-为-f-的莫比乌斯变换，即：" class="headerlink" title="若$F=f\ast u$，则称$F$为$f$的莫比乌斯变换，即："></a>若$F=f\ast u$，则称$F$为$f$的莫比乌斯变换，即：</h5></blockquote>
+<p>$F(n)=\sum_{n\mid n}f(d)$ </p>
+<p>A为B的莫比乌斯变换：</p>
+<p>$d(n),\quad u(n)$</p>
+<p>$I(n),\quad \mu(n)$ </p>
+<h6 id="莫比乌斯反变换"><a href="#莫比乌斯反变换" class="headerlink" title="莫比乌斯反变换"></a>莫比乌斯反变换</h6><p>$F=f\ast u\Rightarrow F\ast\mu=f$ </p>
+<p>$f(n)=\sum_{d\mid n}F(d)\mu(\frac{n}{d})$ </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/04/30/%E6%95%B0%E8%AE%BA%E5%9F%BA%E7%A1%80/" data-id="ck9lpa4010001ogvy0qfo2plc" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/04/30/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hello World</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/04/30/%E6%95%B0%E8%AE%BA%E5%9F%BA%E7%A1%80/">数论基础</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/30/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
